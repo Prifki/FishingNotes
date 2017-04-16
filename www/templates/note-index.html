@@ -1,0 +1,25 @@
+<view title="'Fishing Notes'">
+
+    <div class="bar bar-subheader item-input-inset">
+        <label class="item-input-wrapper">
+            <i class="icon ion-ios7-search placeholder-icon"></i>
+            <input id="searchKey" type="search" placeholder="Search" ng-model="searchKey" autocorrect="off" >
+            <button class="button button-clear" ng-click="clearSearch()">X</button>
+        </label>
+        <button class="button button-clear" ng-click="search()">Search</button>
+    </div>
+
+    <content has-header="true" has-subheader="true">
+        <list><a class="item" style="font-size:20px;" href="#/create">New Note
+                  <i class="icon ion-plus"></i>
+              </a>
+            <a ng-repeat="note in notes" class="item item-thumbnail-left" href="#/note/{{note.id}}">
+                <img ng-src="{{note.pic}}" onerror="this.src = 'img/nophoto.png'"/>
+                <h2>{{note.fish}} {{note.weight}} {{note.weightType}}</h2>
+                <h3>{{note.place}}</h3>
+                <p>{{note.date | date: "dd-MM-yyyy HH:mm"}}</p>
+            </a>
+        </list>
+    </content>
+
+</view>

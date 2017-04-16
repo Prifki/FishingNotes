@@ -1,0 +1,23 @@
+<view title="note.fish + ' ' + note.weight">
+  <content has-header="true" padding="true">
+      <img src="{{note.pic}}" onerror="this.src = 'img/nophoto.png'" style="width: 100%"/>
+      <div class="details">
+          <h2>{{ note.fish }} {{ note.weight }} {{ note.weightType}}</h2>
+          <h3>{{ note.place }}</h3>
+          <p>{{ note.date | date: "dd-MM-yyyy HH:mm"}}</p>
+          <a class="button button-positive" href="#/edit/{{note.id}}">Edit</a>
+          <a class="button button-assertive" href="#/delete/{{note.id}}">Delete</a>
+      </div>
+
+      <ul class="list card">
+          <li class="item">Weight<p>{{note.weight}} {{note.weightType}}</p></li>
+          <li class="item">Length<p>{{note.length}} {{note.lengthType}}</p></li>
+          <li class="item" ng-show="note.weather">Weather<p>{{note.weather}}</p></li>
+          <li class="item" ng-show="note.method">Fishing method<p>{{note.method}}</p></li>
+          <li class="item" ng-show="note.bait">Bait<p>{{note.bait}}</p></li>
+          <li class="item" ng-show="note.geoposition">Geoposition<p>{{note.geoposition}}</p></li>
+          <li class="item" ng-show="note.details">Details<p>{{note.details}}</p></li>
+      </ul>
+
+  </content>
+</view>

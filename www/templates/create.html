@@ -1,0 +1,80 @@
+﻿<view title="'New Note'">
+    <content has-header="true" padding="true">
+        <form name="newNote" ng-controller="CreateNote as CrNt" ng-submit="CrNt.addNote(note)" novalidate>
+            <div class="list">
+                <input type="text" id="picUrl" style="display: none;" value="0" ng-model="note.pic">
+                <img id="fishPhoto" src="img/nophoto.png" class="full-width" />
+                <input type="button" value="Choose Image" onclick="getPhoto(pictureSource.PHOTOLIBRARY);" 
+                       class="button button-full button-positive full-width" style="margin: 10px 0px; display: block; width: 100%;">
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">Fish</span>
+                    <input type="text" ng-model="note.fish" ng-init="note.fish = 'My Fish'" required>
+                </label>
+                <div class="item item-floating-label">
+                    <div class="raw">
+                        <span class="col col-50 input-label toleft">Weight</span>
+                        <input class="col col-25 toleft" type="number" id="weightVal" placeholder="2"
+                               onchange="document.getElementById('weightRange').value = this.value" ng-model="note.weight" >
+                        <select class="col col-25 toleft" ng-init="note.weightType = 'Kg'" ng-model="note.weightType" required>
+                            <option>Kg</option>
+                            <option>Lb</option>
+                        </select>
+                    </div>
+                    <div class="range">
+                        <input type="range" id="weightRange" min="0" max="10" ng-init="note.weight = 2"
+                               onchange="document.getElementById('weightVal').value = this.value" ng-model="note.weight">
+                    </div>
+                </div>
+                <div class="item item-floating-label">
+                    <div class="raw">
+                        <span class="col col-50 input-label toleft">Length</span>
+                        <input class="col col-25 toleft" type="number" id="lengthVal" placeholder="30"
+                               onchange="document.getElementById('lengthRange').value = this.value" ng-model="note.length">
+                        <select class="col col-25 toleft" ng-init="note.lengthType = 'Cm'" ng-model="note.lengthType">
+                            <option>Cm</option>
+                            <option>In</option>
+                        </select>
+                    </div>
+                    <div class="range">
+                        <input type="range" id="lengthRange" min="0" max="70" ng-init="note.length = 30"
+                               onchange="document.getElementById('lengthVal').value = this.value" ng-model="note.length">
+                    </div>
+                </div>
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">Time</span>
+                    <input type="datetime-local" displayFormat="DD.MM.YYYY HH:mm" 
+                    value="{{setTime | date: "dd-MM-yyyy HH:mm"}}" ng-model="setTime" ng-change="note.date=setTime" >
+                </label>
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">Geoposition</span>
+                    <input id="geoPos" value="Unable to get" type="text">
+                </label>
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">Place name</span>
+                    <input type="text" placeholder="Place Name" ng-model="note.place">
+                </label>
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">weather</span>
+                    <input type="text" placeholder="weather" ng-model="note.weather">
+                </label>
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">method</span>
+                    <input type="text" placeholder="method" ng-model="note.method">
+                </label>
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">bait</span>
+                    <input type="text" placeholder="bait" ng-model="note.bait">
+                </label>
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">details</span>
+                    <input type="text" placeholder="details" ng-model="note.details">
+                </label>
+                <div class="padding">
+                    <button class="button button-block button-positive" type="submit">
+                        Create Note
+                    </button>
+                </div>
+            </div>
+        </form>
+    </content>
+</view>
